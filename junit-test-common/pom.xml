@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>test</artifactId>
+        <groupId>com.kq</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.kq</groupId>
+    <artifactId>junit-test-common</artifactId>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.kq</groupId>
+            <artifactId>junit-test-a</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.kq</groupId>
+            <artifactId>junit-test-b</artifactId>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19</version>
+
+                <configuration>
+                    <!--配置是否跳过测试用例执行-->
+                    <!--<skipTests>true</skipTests>-->
+                    <includes>
+                        <include>com/kq/test*/**/*Test.java</include>
+                    </includes>
+
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <executions>
+                    <execution>
+                        <id>report-aggregate</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report-aggregate</goal>
+                        </goals>
+                        <!--<configuration>
+                           <includes>com/**/util/**</includes>
+                        </configuration>-->
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
+
+
+</project>
